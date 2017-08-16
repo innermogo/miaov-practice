@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>模拟手机短信发送</title>
+		<style type="text/css">
+			*{
+				margin: 0; padding: 0;
+			}
+			body {
+				background: #9d98bb;
+			}
+			
+			.iphone {
+				background: url(模拟手机短信发送_03.jpg)no-repeat;
+				width: 359px;
+				height: 679px;
+				margin: 0 auto;
+				padding-top: 40px;
+				position: relative;
+			}
+			
+			.show {
+				width: 320px;
+				max-height: 520px;
+				margin-top: 8px;
+				margin-left: 16px;
+				overflow: auto;
+			}
+			
+			.show .zuo {
+				margin: 15px 0px;
+				overflow: hidden;
+				padding-left: 15px;
+			}
+			.show .zuo img{
+				   float: left;	
+			}
+			
+			/*这个before不知道为什怎么放到.span外面..*/
+			.show .zuo span:before {
+				width: 0;
+				height: 0;
+				border-top: 5px solid transparent;
+				border-right: 6px solid #e5e5e5;
+				border-bottom: 5px solid transparent;
+				display: inline-block;
+				margin-left: -16px;
+				margin-right: 10px;
+				content: ' ';
+			}
+			
+			.show .zuo span {
+				display: inline-block;
+				max-width: 220px;
+				background: #be4e6f;
+				margin-left: 10px;
+				margin: 0 5px;
+				padding: 10px;
+				border-radius: 5px;
+				color: white;
+				font-size: 14px;
+				
+			}
+			.show .you img{
+				   float: right;	
+			}
+			.show .you {
+				margin: 15px 0px;
+				overflow: hidden;
+				padding-right: 15px;
+			}
+			
+			.show .you span:after {
+				width: 0;
+				height: 0;
+				border-top: 5px solid transparent;
+				border-left: 6px solid #e5e5e5;
+				border-bottom: 5px solid transparent;
+				display: inline-block;
+				content: ' ';
+			}
+			
+			.show .you span {
+				float: right;
+				max-width: 220px;
+				background: #23161c;
+				margin-right: 10px;
+				margin: 0 5px;
+				padding: 10px;
+				border-radius: 5px;
+				color: white;
+				font-size: 14px;
+				overflow: hidden;
+			}
+			
+			.submit {
+				width: 322px;
+				background: #0a1b3e;
+				position: absolute;
+				bottom: 71px;
+				left: 17px;
+			}
+			
+			.submit .ico {
+				position: absolute;
+				top: 12px;
+				left: 18px;
+				cursor: pointer;
+			}
+			
+			.submit .import {
+				width: 190px;
+				height: 40px;
+				margin: 10px auto;
+			}
+			
+			.submit .import input {
+				width: 190px;
+				height: 40px;
+				border: none;
+				border-radius: 5px;
+				font-size: 16px;
+			}
+			
+			.submit .send {
+				position: absolute;
+				top: 20px;
+				right: 18px;
+				color: red;
+				font-size: 18px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="iphone">
+			<div class="show">
+
+			</div>
+
+			<div class="submit">
+				<div class="ico">
+					<img src="ico-1.png" />
+				</div>
+				<div class="import">
+					<input type="text" id="text" />
+				</div>
+				<div class="send">
+					发送
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+		//点击切换 头像
+		var iphone=document.querySelector(".iphone");
+		var show=document.querySelector(".show");
+		var oSub=document.querySelector(".submit");
+		var ico=document.querySelector(".ico");
+		var oImg=ico.querySelector("img");
+		var oImp=document.querySelector(".import");
+		var send=document.querySelector(".send");
+		var oTxt=document.getElementById("text");
+		var state=true;
+		oImg.onclick=function(){
+              if(state){
+             oImg.src="ico-2.png";
+			 state=false;
+			  }else{
+			 oImg.src="ico-1.png";
+			  state=true;
+			  }	  
+		}
+
+		//发送消息
+		send.onclick=function(){
+         //判断是否为空
+		 if(oTxt.value==''){
+               alert("请输入文字！")
+		 }else if(state){
+show.innerHTML='<div class="zuo">'+ico.innerHTML+'<span>'+oTxt.value+'</span>'+'</div>'+show.innerHTML;
+			oTxt.value='';
+		 }else{
+show.innerHTML='<div class="you">'+ico.innerHTML+'<span>'+oTxt.value+'</span>'+'</div>'+show.innerHTML;
+			oTxt.value='';
+		 }
+
+			
+		}
+		</script>
+	</body>
+
+</html>
